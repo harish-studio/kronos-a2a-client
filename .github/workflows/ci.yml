@@ -1,0 +1,18 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  install:
+    # Proves the claim in the README: this client installs and imports
+    # from the public A2A SDKs alone, with no kronos-agent package present.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --pre .
+      - run: python -c "import client; assert not any(m.startswith('kronos_agent') for m in __import__('sys').modules)"
