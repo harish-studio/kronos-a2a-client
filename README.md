@@ -16,7 +16,7 @@ It stands in for another organisation's agent. It depends only on the public A2A
 
 ```bash
 python3.11 -m venv .venv && source .venv/bin/activate
-pip install --pre .          # agent-framework-a2a has only pre-release builds
+pip install .                # no --pre: see pyproject.toml
 
 export A2A_URL=https://<a2a-fqdn>/          # kronos-agent: terraform -chdir=infra output -raw a2a_fqdn
 export KRONOS_API_KEY=<key>                 # kronos-agent: terraform -chdir=infra output -raw kronos_api_key

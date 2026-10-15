@@ -8,9 +8,12 @@ requires-python = ">=3.11"
 # side is a deliberate bump, not a drift.
 dependencies = [
     "a2a-sdk==1.1.2",
-    # No stable release exists yet; install with `pip install --pre`.
+    # No stable release exists yet. Pinning the pre-release exactly is
+    # enough for pip to accept it, so installs do NOT use --pre: --pre
+    # lets every dependency resolve to a pre-release, and pulled in
+    # httpx 1.0.dev6, which has no AsyncClient.
     "agent-framework-a2a==1.0.0b260910",
-    "httpx>=0.28.1",
+    "httpx>=0.28.1,<1",
 ]
 
 [build-system]

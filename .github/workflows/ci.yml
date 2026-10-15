@@ -14,5 +14,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install --pre .
+      - run: pip install .
       - run: python -c "import client; assert not any(m.startswith('kronos_agent') for m in __import__('sys').modules)"
